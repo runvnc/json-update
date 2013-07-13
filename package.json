@@ -1,0 +1,14 @@
+{
+  "name": "json-update",
+  "version": "0.0.1",
+  "description": "Allows for very simple JSON file updating in one line",
+  "author": "Jason Livesay",
+  "dependencies": {
+    "underscore": "",
+    "fs-extra": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ithkuil/json-update.git"
+  }
+}
