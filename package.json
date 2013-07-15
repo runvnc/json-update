@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "Allows for very simple JSON file updating in one line",
   "author": "Jason Livesay",
+  "main": "lib/json-update.js",
   "dependencies": {
     "underscore": "",
     "fs-extra": ""
