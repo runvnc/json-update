@@ -14,7 +14,7 @@ exports.update = (filename, obj, cb) ->
   loaded = (data) ->
     if err? then return cb new Error("Could not load JSON for update: #{err?.message}")
 
-    data = und.merge data, obj
+    data = dash.merge data, obj
 
     fs.outputJson filename, data, (err) ->
       if err? then return cb new Error("Problem saving JSON file: #{err?.message}")

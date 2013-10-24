@@ -9,7 +9,6 @@
     "lodash": "~2.2.1"
   },
   "scripts": {
-    "preinstall": "npm i -g ethercalc"
   },
   "repository": {
     "type": "git",
