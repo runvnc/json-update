@@ -1,5 +1,5 @@
 fs = require 'fs-extra'
-und = require 'underscore'
+dash = require 'lodash'
 
 exports.load = (filename, cb) ->
   fs.readFile filename, 'utf8', (err, data) ->
@@ -14,7 +14,7 @@ exports.update = (filename, obj, cb) ->
   loaded = (data) ->
     if err? then return cb new Error("Could not load JSON for update: #{err?.message}")
 
-    data = und.extend data, obj
+    data = und.merge data, obj
 
     fs.outputJson filename, data, (err) ->
       if err? then return cb new Error("Problem saving JSON file: #{err?.message}")

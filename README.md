@@ -1,6 +1,6 @@
 This is a simple way to update (or load) a JSON file.  If the JSON file does not exist it will be created (along with a directory structure if those directories don't exist yet).
 
-Uses underscore to extend existing JSON data with the object you specify, overwriting anything with an 
+Uses lodash to merge existing JSON data with the object you specify, overwriting anything with an 
 existing property and adding properties if they are new.
 
 `npm install json-update`
@@ -24,9 +24,3 @@ json.load 'data.json', (err, obj) ->
   console.log "Loaded from json:"
   console.log obj
 ```
-
-
-
-
-```
-

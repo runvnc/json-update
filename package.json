@@ -1,12 +1,15 @@
 {
   "name": "json-update",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Allows for very simple JSON file updating in one line",
   "author": "Jason Livesay",
   "main": "lib/json-update.js",
   "dependencies": {
-    "underscore": "",
-    "fs-extra": ""
+    "fs-extra": "",
+    "lodash": "~2.2.1"
+  },
+  "scripts": {
+    "preinstall": "npm i -g ethercalc"
   },
   "repository": {
     "type": "git",
