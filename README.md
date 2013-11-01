@@ -5,13 +5,14 @@ existing property and adding properties if they are new.
 
 `npm install json-update`
 
-Updating a JSON file:
+Updating a JSON file (and return the new object):
 
 ```coffeescript
 json = require 'json-update'
 
-json.update 'data.json', { test: 'value x' }, (err) ->
+json.update 'data.json', { test: 'value x' }, (err, obj) ->
   if err? then console.log "Error updating json: #{err.message}"
+  console.log obj
 
 ```
 
