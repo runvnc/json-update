@@ -10,10 +10,12 @@
 
   describe('json-update', function() {
     describe('#load()', function() {
-      return it('should read a JSON file into an object', function() {
+      return it('should read a JSON file into an object', function(done) {
         return json.load('test.json', function(err, obj) {
+          console.log(err);
           assert.equal(obj.test1, 'hello');
-          return assert.equal(obj.test2, 2);
+          assert.equal(obj.test2, 2);
+          return done();
         });
       });
     });
@@ -42,13 +44,18 @@
       });
     });
     return describe('update existing', function() {
-      return it('should update existing JSON file with data', function() {
+      return it('should update existing JSON file with data ..', function(done) {
         return json.update('sub/test2.json', {
           test: 'new'
-        }, function(err) {
+        }, function(err, data) {
           assert.equal(err, null);
+          assert.equal(data.test, 'new');
           return fs.readFile('sub/test2.json', 'utf8', function(err, str) {
-            return assert.equal(str, '{ "test": "new" }');
+            var read;
+
+            read = JSON.parse(str);
+            assert.equal(read.test, 'new');
+            return done();
           });
         });
       });

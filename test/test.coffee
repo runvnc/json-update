@@ -4,10 +4,12 @@ json = require '../lib/json-update.js'
 
 describe 'json-update', ->
   describe '#load()', ->
-    it 'should read a JSON file into an object', ->      
+    it 'should read a JSON file into an object', (done) ->      
       json.load 'test.json', (err, obj) ->
+        console.log err
         assert.equal obj.test1, 'hello'
         assert.equal obj.test2, 2
+        done()
 
   describe 'update non-existing', ->
     it 'should create a subdirectory and JSON file with data', (done) ->
@@ -25,8 +27,13 @@ describe 'json-update', ->
             done()
 
   describe 'update existing', ->
-    it 'should update existing JSON file with data', ->
-      json.update 'sub/test2.json', { test: 'new' }, (err) ->
+    it 'should update existing JSON file with data ..', (done) ->
+      json.update 'sub/test2.json', { test: 'new' }, (err, data) ->
         assert.equal err, null
+        assert.equal data.test, 'new'
         fs.readFile 'sub/test2.json', 'utf8', (err, str) ->
-          assert.equal str, '{ "test": "new" }'
+          read = JSON.parse str
+          assert.equal read.test, 'new'
+          done()
+
+
