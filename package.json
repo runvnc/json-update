@@ -1,9 +1,20 @@
 {
   "name": "json-update",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Allows for very simple JSON file updating in one line",
   "author": "Jason Livesay",
   "main": "lib/json-update.js",
+  "keywords": [
+    "json",
+    "update",
+    "serialization",
+    "deserialization",
+    "save",
+    "load",
+    "file",
+    "merge",
+    "database"
+  ],
   "dependencies": {
     "fs-extra": "",
     "lodash": "~2.2.1"
