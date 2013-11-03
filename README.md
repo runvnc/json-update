@@ -14,7 +14,7 @@ json = require('json-update')
 
 json.update('data.json', { test: 'value x' }, function(err, obj) {
   if (typeof err !== "undefined" && err !== null) {
-    console.log(Error updating json: " + err.message);
+    console.log("Error updating json: " + err.message);
   }
   console.log(obj);
 )};
