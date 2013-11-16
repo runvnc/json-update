@@ -1,6 +1,6 @@
 {
   "name": "json-update",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "Allows for very simple JSON file updating in one line",
   "author": "Jason Livesay",
   "main": "lib/json-update.js",
@@ -17,10 +17,10 @@
   ],
   "dependencies": {
     "fs-extra": "",
-    "lodash": "~2.2.1"
+    "lodash": "~2.2.1",
+    "lockfile": "~0.4.2"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/ithkuil/json-update.git"

@@ -1,28 +1,48 @@
+#This is actually ToffeeScript https://github.com/jiangmiao/toffee-script
+
 fs = require 'fs-extra'
+lockfile= require 'lockfile'
 dash = require 'lodash'
 
-exports.load = (filename, cb) ->
-  fs.readFile filename, 'utf8', (err, data) ->
-    if err? then return cb new Error("Error reading JSON file #{filename}: #{err?.message}")
+opts =
+  wait: 2000
+  stale: 30000
+  retries: 2
+  retryWait: 100
 
+exports.load = (filename, cb) ->
+  er = lockfile.lock! "#{filename}.lock", opts
+  if er?
+    return cb er
+  else
+    err, data = fs.readFile! filename, 'utf8'
+    lockfile.unlock! "#{filename}.lock"
+    if err? then return cb new Error("Error reading JSON file #{filename}: #{err?.message}")
     try
       return cb null, JSON.parse data
     catch e
       return cb new Error("Error parsing JSON in #{filename}. Data is #{data}. Error was #{e.message}")
     
 exports.update = (filename, obj, cb) ->
-  loaded = (data) ->
-    if err? then return cb new Error("Could not load JSON for update: #{err?.message}")
-
+  loaded = (data, dolock) ->
     data = dash.merge data, obj
+    
+    if dolock
+      er1 = lockfile.lock! "#{filename}.lock"
+    else
+      er1 = null
 
-    fs.outputJson filename, data, (err) ->
+    if er1?
+      return cb er1
+    else
+      err = fs.outputJson! filename, data
+      lockfile.unlock! "#{filename}.lock"
       if err? then return cb new Error("Problem saving JSON file: #{err?.message}")
       return cb null, data
 
-  fs.exists filename, (exists) ->
-    if not exists
-      loaded {}
-    else
-      exports.load filename, (err, filedata) ->
-        loaded filedata
+  if not fs.exists!(filename)
+    loaded {}, false
+  else
+    err, filedata = exports.load! filename
+    loaded filedata, true
+
