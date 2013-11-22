@@ -2,7 +2,7 @@
 
 fs = require 'fs-extra'
 lockfile= require 'lockfile'
-dash = require 'lodash'
+und = require 'underscore'
 
 opts =
   wait: 2000
@@ -25,7 +25,7 @@ exports.load = (filename, cb) ->
     
 exports.update = (filename, obj, cb) ->
   loaded = (data, dolock) ->
-    data = dash.merge data, obj
+    data = und.extend data, obj
     
     if dolock
       er1 = lockfile.lock! "#{filename}.lock"

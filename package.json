@@ -1,6 +1,6 @@
 {
   "name": "json-update",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Allows for very simple JSON file updating in one line",
   "author": "Jason Livesay",
   "main": "lib/json-update.js",
@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "fs-extra": "",
-    "lodash": "~2.2.1",
+    "underscore":"",
     "lockfile": "~0.4.2"
   },
   "scripts": {},
