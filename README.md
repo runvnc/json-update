@@ -15,7 +15,7 @@ json.update('data.json', { test: 'value x' }, function(err, obj) {
     console.log("Error updating json: " + err.message);
   }
   console.log(obj);
-)};
+});
 ```
 
 Loading a JSON file (note that in the case of loading a valid JSON file must already exist):
