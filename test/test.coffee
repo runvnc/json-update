@@ -36,4 +36,11 @@ describe 'json-update', ->
           assert.equal read.test, 'new'
           done()
 
+  describe 'try with promise', ->
+    it 'should work with a promise', (done) ->
+      json.update('sub/test2.json', { promise: true })
+          .then (data) ->
+            assert.equal(data.promise, true);
+            done();
+
 

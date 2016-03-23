@@ -3,9 +3,38 @@ This is a simple way to update (or load) a JSON file.  If the JSON file does not
 Uses underscore to extend existing JSON data with the object you specify, overriding anything with an 
 existing property and adding properties if they are new.
 
+New version supports promises (and async/await with babel).
+
 `npm install json-update`
 
-Updating a JSON file (and return the new object):
+Updating a JSON file (and return the new object) (with promise):
+
+```javascript
+json = require('json-update');
+
+json.update('data.json',{test:10})
+.then(function(dat) { 
+  console.log(dat.test) 
+});
+
+```
+
+With async/await (you must use `babel` with `babel-polyfill` etc. as with all use of async/await):
+
+```javascript
+import {update, load} from 'json-update';                                                                                                            
+
+async function test() {
+  await update('t.json', {x:2});
+  let dat = await load('t.json');
+  console.log(dat.x);
+}                                                                                                                                                    
+                                                                                                                                                     
+test().then(()=> {}).catch( e=> {console.error(e)}); 
+
+```
+
+With a callback:
 
 ```javascript
 json = require('json-update')

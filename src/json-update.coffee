@@ -3,6 +3,7 @@
 fs = require 'fs-extra'
 lockfile= require 'lockfile'
 und = require 'underscore'
+pify = require 'pify'
 
 opts =
   wait: 2000
@@ -30,10 +31,10 @@ doload = (filename, unlock, cb) ->
     catch e
       return cb new Error("Error parsing JSON in #{filename}. Data is #{data}. Error was #{e.message}")
 
-exports.load = (filename, cb) ->
+load = (filename, cb) ->
   doload filename, true, cb
     
-exports.update = (filename, obj, cb) ->
+update = (filename, obj, cb) ->
   cb = fixempty cb
   loaded = (data) ->
     data = und.extend data, obj
@@ -47,4 +48,7 @@ exports.update = (filename, obj, cb) ->
   else
     err, filedata = doload! filename, false
     loaded filedata, false
+
+exports.load = pify load
+exports.update = pify update
 

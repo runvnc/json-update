@@ -17,8 +17,9 @@
   ],
   "dependencies": {
     "fs-extra": "",
-    "underscore":"",
-    "lockfile": "~0.4.2"
+    "lockfile": "~0.4.2",
+    "pify": "^2.3.0",
+    "underscore": ""
   },
   "scripts": {},
   "repository": {
