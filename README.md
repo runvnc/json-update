@@ -28,10 +28,9 @@ async function test() {
   await update('t.json', {x:2});
   let dat = await load('t.json');
   console.log(dat.x);
-}                                                                                                                                                    
-                                                                                                                                                     
-test().then(()=> {}).catch( e=> {console.error(e)}); 
+}
 
+test().then(()=> {}).catch( e=> {console.error(e)}); 
 ```
 
 With a callback:
