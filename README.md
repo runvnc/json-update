@@ -22,7 +22,7 @@ json.update('data.json',{test:10})
 With async/await (you must use `babel` with `babel-polyfill` etc. as with all use of async/await):
 
 ```javascript
-import {update, load} from 'json-update';                                                                                                            
+import {update, load} from 'json-update';
 
 async function test() {
   await update('t.json', {x:2});
