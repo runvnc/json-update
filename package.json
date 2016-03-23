@@ -1,6 +1,6 @@
 {
   "name": "json-update",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Allows for very simple JSON file updating in one line",
   "author": "Jason Livesay",
   "main": "lib/json-update.js",
