@@ -26,7 +26,10 @@
           fs.rmdirSync('sub');
         }
         return json.update('sub/test2.json', {
-          test: 'val'
+          test: 'val',
+          nest: {
+            a: 10
+          }
         }, function(err) {
           assert.equal(err, null);
           return fs.exists('sub/test2.json', function(exists) {
@@ -53,6 +56,30 @@
             var read;
             read = JSON.parse(str);
             assert.equal(read.test, 'new');
+            return done();
+          });
+        });
+      });
+    });
+    describe('update deep existing', function() {
+      return it('should deep extend existing JSON file with data ..', function(done) {
+        json.config({
+          deep: true
+        });
+        return json.update('sub/test2.json', {
+          nest: {
+            b: 20
+          }
+        }, function(err, data) {
+          assert.equal(err, null);
+          assert.equal(data.test, 'new');
+          assert.equal(data.nest.a, 10);
+          assert.equal(data.nest.b, 20);
+          return fs.readFile('sub/test2.json', 'utf8', function(err, str) {
+            var read;
+            read = JSON.parse(str);
+            assert.equal(read.test, 'new');
+            assert.equal(data.nest.b, 20);
             return done();
           });
         });

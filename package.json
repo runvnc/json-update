@@ -16,6 +16,7 @@
     "database"
   ],
   "dependencies": {
+    "deep-extend": "^0.4.1",
     "fs-extra": "",
     "lockfile": "~0.4.2",
     "pify": "^2.3.0",

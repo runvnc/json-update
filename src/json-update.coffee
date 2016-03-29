@@ -3,6 +3,7 @@
 fs = require 'fs-extra'
 lockfile= require 'lockfile'
 und = require 'underscore'
+deepExtend = require 'deep-extend'
 pify = require 'pify'
 
 opts =
@@ -10,6 +11,12 @@ opts =
   stale: 30000
   retries: 2
   retryWait: 100
+
+cfg =
+  deep: false
+
+exports.config = (conf) ->
+  cfg = und.extend cfg, conf  
 
 fixempty = (cb) ->
   if not cb?
@@ -37,7 +44,11 @@ load = (filename, cb) ->
 update = (filename, obj, cb) ->
   cb = fixempty cb
   loaded = (data) ->
-    data = und.extend data, obj
+    if not cfg.deep
+      data = und.extend data, obj
+    else
+      deepExtend data, obj
+      
     err = fs.outputJson! filename, data
     lockfile.unlock! "#{filename}.lock"
     if err? then return cb new Error("Problem saving JSON file: #{err?.message}")

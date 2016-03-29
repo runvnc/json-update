@@ -3,6 +3,9 @@ This is a simple way to update (or load) a JSON file.  If the JSON file does not
 Uses underscore to extend existing JSON data with the object you specify, overriding anything with an 
 existing property and adding properties if they are new.
 
+NEW: You may change the extend behavior by calling `config({deep:true})` before calling `update`. This will use `deep-extend` instead of
+underscore extend to merge the data when you call `update`.
+
 New version supports promises (and async/await with babel).
 
 `npm install json-update`
