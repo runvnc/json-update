@@ -19,6 +19,7 @@
     "deep-extend": "^0.6.0",
     "fs-extra": "",
     "lockfile": "~0.4.2",
+    "mocha": "^6.2.0",
     "pify": "^4.0.1",
     "underscore": ""
   },
