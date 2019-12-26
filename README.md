@@ -35,8 +35,9 @@ async function test() {
 
 test().then(()=> {}).catch( e=> {console.error(e)}); 
 ```
+[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Andrew_Yang_2020_%28a%29.png/220px-Andrew_Yang_2020_%28a%29.png">](https://www.yang2020.com/)
 
-[Tiny Villages: Horizontally Scaling Society](https://tinyvillages.org)
+
 
 
 With a callback:
