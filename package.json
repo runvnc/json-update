@@ -19,7 +19,7 @@
     "deep-extend": "^0.6.0",
     "fs-extra": "",
     "lockfile": "~1.0.4",
-    "pify": "^4.0.1",
+    "pify": "^5.0.0",
     "underscore": ""
   },
   "scripts": {},
